@@ -10,6 +10,7 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 //Express Setup
 const app = express();
 
+//EJS Setup
 app.set('view engine', 'ejs');
 
 //POST Request Body-Parsing
