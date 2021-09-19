@@ -18,7 +18,7 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-
+//Static File Rendering
 app.use(express.static('public'));
 
 //GET Request to '/'
