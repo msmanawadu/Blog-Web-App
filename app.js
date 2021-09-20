@@ -27,10 +27,10 @@ app.use(express.static('public'));
 //GET Request to '/'
 app.get('/', function (req, res) {
   res.render('home', {
-    homeContent: homeStartingContent
+    homeContent: homeStartingContent,
+    postsArray: posts
   });
 
-  console.log(posts);
 });
 
 app.get('/about', function (req, res) {
