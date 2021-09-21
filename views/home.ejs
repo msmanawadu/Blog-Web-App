@@ -2,9 +2,10 @@
 <h1>Home</h1>
 <p> <%= homeContent %> </p>
 
-<% for( let i = 0; i < postsArray.length; i++ ) { %>
-<% console.log(postsArray[i].title) %>
-<% } %>
+<%# Looping through Array of Posts %>
+<% postsArray.forEach(post => { %>
+<% console.log(post.title) %>
+<% }) %>
 
 
 
