@@ -24,7 +24,8 @@ app.use(express.urlencoded({
 //Static File Rendering
 app.use(express.static('public'));
 
-//GET Request to '/'
+//GET Requests
+
 app.get('/', function (req, res) {
   res.render('home', {
     homeContent: homeStartingContent,
@@ -50,7 +51,7 @@ app.get('/compose', function (req, res) {
 });
 
 
-
+//POST Request
 app.post('/compose', function (req, res) {
 
   //Javascript Post Object
