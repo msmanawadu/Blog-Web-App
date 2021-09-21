@@ -2,6 +2,11 @@
 <h1>Home</h1>
 <p> <%= homeContent %> </p>
 
-<% console.log(postsArray); %>
+<% for( let i = 0; i < postsArray.length; i++ ) { %>
+<% console.log(postsArray[i].title) %>
+<% } %>
+
+
+
 
 <%- include('partials/footer'); -%>
