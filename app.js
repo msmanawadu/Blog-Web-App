@@ -50,6 +50,10 @@ app.get('/compose', function (req, res) {
   res.render('compose');
 });
 
+app.get('/posts/:postName', function (req, res) {
+  console.log(req.params.postName);
+});
+
 
 //POST Request
 app.post('/compose', function (req, res) {
