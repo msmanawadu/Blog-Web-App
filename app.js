@@ -1,5 +1,6 @@
 const express = require("express");
 const ejs = require("ejs");
+const _ = require("lodash");
 
 //Array of Posts
 const posts = [];
@@ -52,10 +53,16 @@ app.get('/compose', function (req, res) {
 
 app.get('/posts/:postName', function (req, res) {
   const requestedTitle = req.params.postName;
+  const lowerCaseRequestedTitle = _.lowerCase(requestedTitle);
 
   posts.forEach(post => {
-    if (post.title === requestedTitle) {
+    const storedTitle = post.title;
+    const lowerCaseStoredTitle = _.lowerCase(storedTitle);
+
+    if (lowerCaseStoredTitle === lowerCaseRequestedTitle) {
       console.log('Match Found');
+    } else {
+      console.log('No Match Found');
     }
   })
 });
