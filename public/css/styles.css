@@ -1,3 +1,8 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 .container-fluid {
     padding-top: 70px;
     padding-bottom: 70px;
@@ -22,20 +27,16 @@ div.compose-form-control-group {
 }
 
 
-
-
-
-
 .footer-padding {
     padding-bottom: 150px;
 }
 
 .footer {
-    position: fixed;
+    position: absolute;
     text-align: center;
     bottom: 0;
     width: 100%;
-    height: 60px;
+    height: 80px;
     background-color: #1abc9c;
 }
 
