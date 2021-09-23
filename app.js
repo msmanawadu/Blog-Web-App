@@ -51,14 +51,19 @@ app.get('/compose', function (req, res) {
   res.render('compose');
 });
 
+//Request Parameters
 app.get('/posts/:postName', function (req, res) {
   const requestedTitle = req.params.postName;
+
+  //Lodash to convert into lowercase
   const lowerCaseRequestedTitle = _.lowerCase(requestedTitle);
 
+  //Looping through each post object
   posts.forEach(post => {
     const storedTitle = post.title;
     const lowerCaseStoredTitle = _.lowerCase(storedTitle);
 
+    //Evaluating lower cased title matching
     if (lowerCaseStoredTitle === lowerCaseRequestedTitle) {
       console.log('Match Found');
     } else {
