@@ -23,7 +23,7 @@ app.use(express.urlencoded({
 }));
 
 //Static File Rendering
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 //GET Requests
 
@@ -65,9 +65,10 @@ app.get('/posts/:postName', function (req, res) {
 
     //Evaluating lower cased title matching
     if (lowerCaseStoredTitle === lowerCaseRequestedTitle) {
-      console.log('Match Found');
-    } else {
-      console.log('No Match Found');
+      res.render('post', {
+        postTitle: post.title,
+        postBody: post.content
+      });
     }
   })
 });
