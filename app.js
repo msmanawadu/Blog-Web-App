@@ -23,7 +23,7 @@ app.use(express.urlencoded({
 }));
 
 //Static File Rendering
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 //GET Requests
 
@@ -51,18 +51,24 @@ app.get('/compose', function (req, res) {
   res.render('compose');
 });
 
+//Request Parameters
 app.get('/posts/:postName', function (req, res) {
   const requestedTitle = req.params.postName;
+
+  //Lodash to convert into lowercase
   const lowerCaseRequestedTitle = _.lowerCase(requestedTitle);
 
+  //Looping through each post object
   posts.forEach(post => {
     const storedTitle = post.title;
     const lowerCaseStoredTitle = _.lowerCase(storedTitle);
 
+    //Evaluating lower cased title matching
     if (lowerCaseStoredTitle === lowerCaseRequestedTitle) {
-      console.log('Match Found');
-    } else {
-      console.log('No Match Found');
+      res.render('post', {
+        postTitle: post.title,
+        postBody: post.content
+      });
     }
   })
 });
@@ -71,16 +77,15 @@ app.get('/posts/:postName', function (req, res) {
 //POST Request
 app.post('/compose', function (req, res) {
 
-  //Javascript Post Object
+  //Javascript Post Object | Kebab Casing
   const post = {
     title: req.body.postTitle,
+    slug: _.kebabCase(req.body.postTitle),
     content: req.body.postBody
   };
 
   posts.push(post);
-
   res.redirect('/');
-
 });
 
 
