@@ -77,25 +77,16 @@ app.get('/posts/:postName', function (req, res) {
 //POST Request
 app.post('/compose', function (req, res) {
 
-  //Javascript Post Object
+  //Javascript Post Object | Kebab Casing
   const post = {
     title: req.body.postTitle,
+    slug: _.kebabCase(req.body.postTitle),
     content: req.body.postBody
   };
 
   posts.push(post);
-
   res.redirect('/');
-
 });
-
-
-
-
-
-
-
-
 
 
 //Setup Express Server
